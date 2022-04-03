@@ -128,11 +128,12 @@ def order_book():
     # Note that you can access the database session using g.session
     datalist = []
     for row in g.session.query(Order).all():
-        print(row.sender_pk)
+
         temp = {'sender_pk': row.sender_pk, 'receiver_pk': row.receiver_pk, 'buy_currency': row.buy_currency,
                 'sell_currency': row.sell_currency, 'buy_amount': row.buy_amount, 'sell_amount': row.sell_amount,
                 'signature': row.signature}
-        datalist += temp
+        print(temp)
+        datalist.append(temp)
     result = {'data': datalist}
     print(result)
     return jsonify(result)
