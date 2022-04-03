@@ -49,7 +49,7 @@ def add_to_order(sender_pk, receiver_pk, buy_currency, sell_currency, buy_amount
     order_obj = Order(sender_pk=sender_pk, receiver_pk=receiver_pk,
                       buy_currency=buy_currency, sell_currency=sell_currency,
                       buy_amount=buy_amount, sell_amount=sell_amount, signature=signature)
-    print(order_obj.sender_pk, "here")
+    # print(order_obj.sender_pk, "here")
     g.session.add(order_obj)
     g.session.commit()
 
@@ -128,7 +128,10 @@ def order_book():
     # Note that you can access the database session using g.session
     datalist = []
     for row in g.session.query(Order).all():
-        datalist += row.__dict__
+        temp = {'sender_pk': row.sender_pk, 'receiver_pk': row.receiver_pk, 'buy_currency': row.buy_currency,
+                'sell_currency': row.sell_currency, 'buy_amount': row.buy_amount, 'sell_amount': row.sell_amount,
+                'signature': row.signature}
+        datalist += temp
     result = {'data': datalist}
     print(result)
     return jsonify(result)
