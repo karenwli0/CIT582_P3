@@ -127,7 +127,8 @@ def order_book():
                            Order.buy_amount,
                            Order.sell_amount, Order.signature).all()
     result = {'data': data}
-    return jsonify(data)
+    print(result)
+    return jsonify(result)
 
 
 if __name__ == '__main__':
