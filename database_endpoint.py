@@ -128,7 +128,7 @@ def order_book():
     data = g.session.query(Order).all()
     result = {'data': data}
     print(result)
-    return jsonify(result)
+    return jsonify(json.dumps(result))
 
 
 if __name__ == '__main__':
