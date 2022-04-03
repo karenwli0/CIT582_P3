@@ -106,7 +106,7 @@ def trade():
             if algosdk.util.verify_bytes(msg.encode('utf-8'), sig, pk):
                 result = True
 
-        # print(result)
+        print(result)
 
         if not result:
             msg = json.dumps(payload)
