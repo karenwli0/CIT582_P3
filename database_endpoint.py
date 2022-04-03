@@ -125,10 +125,12 @@ def trade():
 def order_book():
     # Your code here
     # Note that you can access the database session using g.session
-    data = g.session.query(Order).all()
-    result = {'data': data}
+    datalist = []
+    for row in g.session.query(Order).all():
+        datalist += row.__dict__
+    result = {'data': datalist}
     print(result)
-    return jsonify(json.dumps(result))
+    return jsonify(result)
 
 
 if __name__ == '__main__':
