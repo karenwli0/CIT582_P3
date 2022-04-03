@@ -103,7 +103,7 @@ def trade():
         if platform == 'Algorand':
             msg = json.dumps(payload)
 
-            if algosdk.util.verify_bytes(msg.encode('utf-8'), sig, pk):
+            if algosdk.util.verify_bytes(msg.encode('utf-32'), sig, pk):
                 result = True
 
         if not result:
