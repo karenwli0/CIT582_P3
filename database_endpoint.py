@@ -88,7 +88,7 @@ def trade():
         payload = content.get('payload')
         platform = payload.get('platform')
         sig = content.get('sig')
-        pk = payload.get('pk')
+        pk = payload.get('sender_pk')
 
         result = False
 
@@ -106,7 +106,7 @@ def trade():
             if algosdk.util.verify_bytes(msg.encode('utf-8'), sig, pk):
                 result = True
 
-        print(result)
+        # print(result)
 
         if not result:
             msg = json.dumps(payload)
