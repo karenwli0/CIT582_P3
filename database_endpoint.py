@@ -49,6 +49,7 @@ def add_to_order(sender_pk, receiver_pk, buy_currency, sell_currency, buy_amount
     order_obj = Order(sender_pk=sender_pk, receiver_pk=receiver_pk,
                       buy_currency=buy_currency, sell_currency=sell_currency,
                       buy_amount=buy_amount, sell_amount=sell_amount, signature=signature)
+    print(order_obj.sender_pk, "here")
     g.session.add(order_obj)
     g.session.commit()
 
