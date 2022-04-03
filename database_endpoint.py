@@ -132,10 +132,10 @@ def order_book():
         temp = {'sender_pk': row.sender_pk, 'receiver_pk': row.receiver_pk, 'buy_currency': row.buy_currency,
                 'sell_currency': row.sell_currency, 'buy_amount': row.buy_amount, 'sell_amount': row.sell_amount,
                 'signature': row.signature}
-        print(temp)
+        # print(temp)
         datalist.append(temp)
     result = {'data': datalist}
-    print(result)
+    # print(result)
     return jsonify(result)
 
 
