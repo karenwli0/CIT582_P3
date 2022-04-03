@@ -51,7 +51,6 @@ def add_to_order(sender_pk, receiver_pk, buy_currency, sell_currency, buy_amount
                       buy_amount=buy_amount, sell_amount=sell_amount, signature=signature)
     g.session.add(order_obj)
     g.session.commit()
-    print("here")
 
 
 """
@@ -106,6 +105,8 @@ def trade():
 
             if algosdk.util.verify_bytes(msg.encode('utf-8'), sig, pk):
                 result = True
+
+        print(result)
 
         if not result:
             msg = json.dumps(payload)
